@@ -84,11 +84,11 @@ async function classifyImage() {
 
   resultSection.hidden = false;
   if (match) {
-    resultLabel.textContent = match.kind === "cat" ? "고양이." : "개.";
+    resultLabel.textContent = match.kind === "cat" ? "고양이예요!" : "개예요!";
     resultBreed.textContent = match.className;
     resultConfidence.textContent = `${(match.probability * 100).toFixed(1)}%`;
   } else {
-    resultLabel.textContent = "글쎄요.";
+    resultLabel.textContent = "글쎄요!";
     resultBreed.textContent = `가장 유력한 추측: ${predictions[0].className}`;
     resultConfidence.textContent = `${(predictions[0].probability * 100).toFixed(1)}%`;
   }
