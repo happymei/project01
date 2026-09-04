@@ -5,7 +5,8 @@ const preview = document.getElementById("preview");
 const classifyBtn = document.getElementById("classifyBtn");
 const resultSection = document.getElementById("result");
 const resultLabel = document.getElementById("resultLabel");
-const resultDetail = document.getElementById("resultDetail");
+const resultBreed = document.getElementById("resultBreed");
+const resultConfidence = document.getElementById("resultConfidence");
 const statusEl = document.getElementById("status");
 
 // ImageNet's 5 domestic cat classes (indices 281-285).
@@ -83,12 +84,13 @@ async function classifyImage() {
 
   resultSection.hidden = false;
   if (match) {
-    const label = match.kind === "cat" ? "🐱 고양이예요" : "🐶 개예요";
-    resultLabel.textContent = label;
-    resultDetail.textContent = `${match.className} (${(match.probability * 100).toFixed(1)}%)`;
+    resultLabel.textContent = match.kind === "cat" ? "고양이." : "개.";
+    resultBreed.textContent = match.className;
+    resultConfidence.textContent = `${(match.probability * 100).toFixed(1)}%`;
   } else {
-    resultLabel.textContent = "🤔 개나 고양이가 아닌 것 같아요";
-    resultDetail.textContent = `가장 유력한 추측: ${predictions[0].className} (${(predictions[0].probability * 100).toFixed(1)}%)`;
+    resultLabel.textContent = "글쎄요.";
+    resultBreed.textContent = `가장 유력한 추측: ${predictions[0].className}`;
+    resultConfidence.textContent = `${(predictions[0].probability * 100).toFixed(1)}%`;
   }
 
   setStatus("");

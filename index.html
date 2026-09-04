@@ -4,27 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>개 고양이 판별기</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header class="nav">
+    <div class="brand">PAW / ID</div>
+  </header>
+
   <main>
-    <h1>🐶 개 / 고양이 판별기 🐱</h1>
-    <p class="sub">사진을 올리면 개인지 고양이인지 판별해드려요.</p>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">AI IMAGE CLASSIFIER</p>
+        <h1>DOG<br />OR<br />CAT.</h1>
+        <p class="sub">사진 한 장을 올리면 브라우저에서 곧바로 분석해 개인지 고양이인지 알려드립니다. 서버 업로드 없이, 그 자리에서.</p>
+      </div>
 
-    <label class="drop-zone" id="dropZone">
-      <input type="file" id="fileInput" accept="image/*" hidden />
-      <span id="dropText">이미지를 선택하거나 여기로 드래그하세요</span>
-      <img id="preview" hidden />
-    </label>
-
-    <button id="classifyBtn" disabled>판별하기</button>
-
-    <section id="result" class="result" hidden>
-      <p id="resultLabel" class="result-label"></p>
-      <p id="resultDetail" class="result-detail"></p>
+      <div class="hero-upload">
+        <label class="drop-zone" id="dropZone">
+          <input type="file" id="fileInput" accept="image/*" hidden />
+          <div class="drop-empty" id="dropText">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 16V4M12 4l-4 4M12 4l4 4" />
+              <path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3" />
+            </svg>
+            <span>이미지를 선택하거나<br />여기로 드래그하세요</span>
+          </div>
+          <img id="preview" hidden />
+        </label>
+      </div>
     </section>
 
-    <p id="status" class="status"></p>
+    <div class="cta-row">
+      <button id="classifyBtn" disabled>판별하기</button>
+      <p id="status" class="status"></p>
+    </div>
+
+    <div class="trust-strip">
+      <span>ON-DEVICE</span><span>NO UPLOAD TO SERVER</span><span>TENSORFLOW.JS</span><span>MOBILENET</span><span>FREE</span>
+    </div>
+
+    <section id="result" class="result" hidden>
+      <div class="result-left">
+        <p id="resultLabel" class="result-label"></p>
+        <p id="resultBreed" class="result-breed"></p>
+      </div>
+      <div class="result-right">
+        <p class="result-confidence-tag">CONFIDENCE</p>
+        <p id="resultConfidence" class="result-confidence"></p>
+      </div>
+    </section>
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/4.20.0/tf.min.js"></script>
