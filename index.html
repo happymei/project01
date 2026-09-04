@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>개 고양이 판별기</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>🐶 개 / 고양이 판별기 🐱</h1>
+    <p class="sub">사진을 올리면 개인지 고양이인지 판별해드려요.</p>
+
+    <label class="drop-zone" id="dropZone">
+      <input type="file" id="fileInput" accept="image/*" hidden />
+      <span id="dropText">이미지를 선택하거나 여기로 드래그하세요</span>
+      <img id="preview" hidden />
+    </label>
+
+    <button id="classifyBtn" disabled>판별하기</button>
+
+    <section id="result" class="result" hidden>
+      <p id="resultLabel" class="result-label"></p>
+      <p id="resultDetail" class="result-detail"></p>
+    </section>
+
+    <p id="status" class="status"></p>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/4.20.0/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.1/dist/mobilenet.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
